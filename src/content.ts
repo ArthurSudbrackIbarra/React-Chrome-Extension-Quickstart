@@ -2,11 +2,13 @@
   This file is the content script of the extension.
   It is injected into the page when the extension is loaded.
 
-  The content script is responsible for injecting the React app into the page.
+  The content script has direct access to the DOM of the page
+  and is responsible for injecting the React app into the page.
 
   The content script also has the responsibility of communicating with the React app.
-  This communication is done using the Child class from the messaging module.
+  This communication is done using the ReactApp class from the messaging module.
 */
+
 import { ReactApp } from "./messaging/ReactApp";
 
 /*
@@ -71,7 +73,7 @@ if (window.self === window.top) {
     if (event.key === KEY_BIND) {
       if (!injectedDiv) {
         injectReactApp();
-        startListening();
+        startConnection();
       } else {
         if (appVisible) {
           injectedDiv.setAttribute("class", "closed");
@@ -85,25 +87,35 @@ if (window.self === window.top) {
   });
 }
 
-// ================================== //
-// Make changes as you wish from here //
-// to communicate with the React app. //
-// ================================== //
+/************************************
+  Make changes as you wish from here
+  to communicate with the React app.
+*/
 
-function startListening(): void {
+function startConnection(): void {
   /*
-    Instantiate a new Child object.
+    Instantiate a new ReactApp object.
     This object will be used to communicate with the React app.
   */
   const reactApp = new ReactApp(injectedIframe);
   reactApp.onMessage((message) => {
     console.log("Message received from child iframe: ", message);
-    reactApp.sendMessage({
-      type: "HELLO_RESPONSE",
-      content: {
-        message: "Hello from the parent window!",
-      },
-    });
+    /*
+      Handle the message based on its type.
+      Each message type should be handled in a different case.
+
+      Create new message types in the messaging/messageTypes.ts file.
+    */
+    switch (message.type) {
+      case "HELLO_REQUEST":
+        reactApp.sendMessage({
+          type: "HELLO_RESPONSE",
+          content: {
+            message: "Hello from the parent window!",
+          },
+        });
+        break;
+    }
   });
 }
 

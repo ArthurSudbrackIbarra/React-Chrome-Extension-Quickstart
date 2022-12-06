@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   const [message, setMessage] = useState("");
   /*
-    Instantiate a new Parent object.
+    Instantiate a new ParentWindow object.
     This object will be used to send and receive messages from the parent window.
   */
   const parentWindow = new ParentWindow();

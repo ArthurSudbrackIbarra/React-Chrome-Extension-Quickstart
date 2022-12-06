@@ -1,0 +1,38 @@
+/*
+  This CSS will also be injected into the page
+  when the child iframe is injected.
+*/
+
+#react-app-div {
+  position: fixed;
+  top: 0;
+  width: 500px;
+  height: 500px;
+  border-radius: 15px;
+  padding: 1rem;
+  margin: 1rem;
+  overflow: hidden;
+  z-index: 9999999;
+  background-color: white;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
+#react-app-div:hover {
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+#react-app-div.opened {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+#react-app-div.closed {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+#react-app-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

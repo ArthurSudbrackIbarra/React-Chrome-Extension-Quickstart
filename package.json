@@ -1,42 +1,18 @@
 {
-  "name": "chrome-react-extension-quickstart",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@craco/craco": "7.0.0",
-    "@types/node": "16.18.3",
-    "@types/react": "18.0.25",
-    "@types/react-dom": "18.0.8",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-scripts": "5.0.1",
-    "typescript": "4.8.4"
+  "name": "react-extension-quickstart",
+  "version": "1.0.0",
+  "description": "npm package to generate a quickstart template for creating Chrome extensions.",
+  "type": "module",
+  "bin": "./cli/entrypoint.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart"
   },
-  "scripts": {
-    "build": "npx craco build"
+  "keywords": [],
+  "author": "Arthur Sudbrack Ibarra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart/issues"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "@types/chrome": "0.0.200"
-  },
-  "exports": {
-    "./*": "./build/*.js"
-  }
+  "homepage": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart#readme"
 }

@@ -9,7 +9,7 @@ module.exports = {
               require.resolve("react-dev-utils/webpackHotDevClient"),
             paths.appIndexJs,
           ].filter(Boolean),
-          content: "./src/content.ts",
+          content: "./src/scripts/content.ts",
         },
         output: {
           ...webpackConfig.output,

@@ -25,7 +25,7 @@
       "matches": ["<all_urls>"]
     },
     {
-      "resources": ["inject.css"],
+      "resources": ["index.css"],
       "matches": ["<all_urls>"]
     }
   ]

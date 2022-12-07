@@ -9,7 +9,7 @@
   This communication is done using the ReactApp class from the messaging module.
 */
 
-import { ReactApp } from "./messaging/ReactApp";
+import { ReactApp } from "../messaging/ReactApp";
 
 /*
   Global variables.
@@ -46,7 +46,7 @@ function injectReactApp(): void {
   */
   const link = document.createElement("link");
   link.setAttribute("rel", "stylesheet");
-  link.setAttribute("href", chrome.runtime.getURL("inject.css"));
+  link.setAttribute("href", chrome.runtime.getURL("index.css"));
   document.querySelector("head")?.appendChild(link);
   /*
     Appending the iframe to the div.

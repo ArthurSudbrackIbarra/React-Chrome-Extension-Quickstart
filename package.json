@@ -1,5 +1,5 @@
 {
-  "name": "chrome-react-extension",
+  "name": "chrome-react-extension-quickstart",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,14 +7,13 @@
     "@types/node": "16.18.3",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.8",
-    "axios": "1.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "4.8.4"
   },
   "scripts": {
-    "build": "set INLINE_RUNTIME_CHUNK=false && npx craco build"
+    "build": "npx craco build"
   },
   "eslintConfig": {
     "extends": [
@@ -36,5 +35,8 @@
   },
   "devDependencies": {
     "@types/chrome": "0.0.200"
+  },
+  "exports": {
+    "./*": "./build/*.js"
   }
 }

@@ -3,10 +3,6 @@
   "description": "A Chrome React Extension.",
   "version": "1.0",
   "manifest_version": 3,
-  "action": {
-    "default_popup": "index.html",
-    "default_title": "Open The Popup"
-  },
   "icons": {
     "16": "logo192.png",
     "48": "logo192.png",

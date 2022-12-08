@@ -3,7 +3,8 @@
 import { realpathSync } from "fs";
 import { fileURLToPath } from "url";
 import { resolve } from "path";
-import { askForString } from "./prompt.js";
+import { manyInputs } from "./prompt.js";
+import { ReplacementsMap } from "./ReplacementsMap.js";
 
 /*
   Paths.
@@ -58,10 +59,35 @@ switch (command) {
 */
 
 function create(projectName: string): void {
-  const extensionName = askForString(
-    "What will be the name of the extension? "
-  );
-  const extensionDescription = askForString(
-    "What will be the description of the extension?> "
-  );
+  /*
+    Get input from the user to fill the placeholders.
+  */
+  const answers = manyInputs([
+    ["EXTENSION_NAME", "What will be the name of your extension?"],
+    [
+      "EXTENSION_DESCRIPTION",
+      "What will be the description of your extension?",
+    ],
+    ["EXTENSION_AUTHOR", "What will be the author of your extension?"],
+    [
+      "TOGGLE_EXTENSION_KEYBIND",
+      "Which key will be used to toggle the extension popup visibility (A, Control, F7...)?",
+    ],
+  ]);
+  const {
+    EXTENSION_NAME,
+    EXTENSION_DESCRIPTION,
+    EXTENSION_AUTHOR,
+    TOGGLE_EXTENSION_KEYBIND,
+  } = answers;
+
+  /*
+    ReplacementsMap is used to replace the placeholders in the template files.
+  */
+  const replacementsMap = new ReplacementsMap();
+  replacementsMap.set("PROJECT_NAME", projectName);
+  replacementsMap.set("AUTHOR_NAME", EXTENSION_AUTHOR);
+  replacementsMap.set("EXTENSION_NAME", EXTENSION_NAME);
+  replacementsMap.set("EXTENSION_DESCRIPTION", EXTENSION_DESCRIPTION);
+  replacementsMap.set("TOGGLE_EXTENSION_KEYBIND", TOGGLE_EXTENSION_KEYBIND);
 }

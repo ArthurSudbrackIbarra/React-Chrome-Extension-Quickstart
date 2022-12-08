@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["esnext"],
+    "rootDir": "src",
     "outDir": "dist",
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -13,5 +14,5 @@
     "moduleResolution": "NodeNext",
     "resolveJsonModule": true
   },
-  "include": ["cli"]
+  "include": ["src/cli/**/*.ts"]
 }

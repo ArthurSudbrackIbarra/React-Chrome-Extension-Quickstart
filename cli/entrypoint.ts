@@ -3,7 +3,7 @@
 import { realpathSync } from "fs";
 import { fileURLToPath } from "url";
 import { resolve } from "path";
-import prompt from "prompt-sync";
+import { askForString } from "./prompt.js";
 
 /*
   Paths.
@@ -58,9 +58,10 @@ switch (command) {
 */
 
 function create(projectName: string): void {
-  const input = prompt();
-  const extensionName = input("What will be the name of the extension? ");
-  const extensionDescription = input(
-    "What will be the description of the extension? "
+  const extensionName = askForString(
+    "What will be the name of the extension? "
+  );
+  const extensionDescription = askForString(
+    "What will be the description of the extension?> "
   );
 }

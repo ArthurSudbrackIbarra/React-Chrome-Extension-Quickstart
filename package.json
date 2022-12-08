@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "npm package to generate a quickstart template for creating Chrome extensions.",
   "type": "module",
-  "bin": "./cli/entrypoint.js",
+  "bin": "./build/entrypoint.js",
+  "dependencies": {
+    "@types/node": "16.18.3",
+    "typescript": "4.8.4"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart"
@@ -14,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart/issues"
   },
-  "homepage": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart#readme"
+  "homepage": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart#readme",
+  "devDependencies": {
+    "@types/prompt-sync": "^4.2.0"
+  }
 }

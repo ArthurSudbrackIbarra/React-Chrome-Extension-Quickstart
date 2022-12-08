@@ -1,7 +1,6 @@
 {
   "name": "chrome-react-extension-quickstart",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@craco/craco": "7.0.0",
     "@types/node": "16.18.3",

@@ -57,7 +57,7 @@ switch (command) {
   Functions to handle the commands.
 */
 
-function create(projectName) {
+function create(projectName: string): void {
   const input = prompt();
   const extensionName = input("What will be the name of the extension? ");
   const extensionDescription = input(

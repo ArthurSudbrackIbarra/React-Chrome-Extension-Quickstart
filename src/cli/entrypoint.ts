@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { resolve } from "path";
 import { manyInputs } from "./prompt.js";
 import { ReplacementsMap } from "./ReplacementsMap.js";
+import { TemplateFiller } from "./TemplateFiller.js";
 
 /*
   Paths.
@@ -12,14 +13,7 @@ import { ReplacementsMap } from "./ReplacementsMap.js";
 
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const cmdPath = realpathSync(process.cwd());
-const templateFilesPath = resolve(
-  realpathSync(__dirname),
-  "..",
-  "template-files"
-);
-
-console.log(`[Info] Current directory: ${cmdPath}`);
-console.log(`[Info] Project directory: ${templateFilesPath}`);
+const templatesDir = resolve(realpathSync(__dirname), "..", "template-files");
 
 /*
   Handle command line arguments.
@@ -73,12 +67,17 @@ function create(projectName: string): void {
       "TOGGLE_EXTENSION_KEYBIND",
       "Which key will be used to toggle the extension popup visibility (A, Control, F7...)?",
     ],
+    [
+      "INITIALIZE_GIT_REPOSITORY",
+      "Do you want to initialize a git repository (y/n)?",
+    ],
   ]);
   const {
     EXTENSION_NAME,
     EXTENSION_DESCRIPTION,
     EXTENSION_AUTHOR,
     TOGGLE_EXTENSION_KEYBIND,
+    INITIALIZE_GIT_REPOSITORY,
   } = answers;
 
   /*

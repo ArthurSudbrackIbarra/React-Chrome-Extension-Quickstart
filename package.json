@@ -11,7 +11,7 @@
     "typescript": "4.8.4"
   },
   "scripts": {
-    "build": "npx tsc && xcopy src\\template-files dist\\template-files\\ /E/H/Y",
+    "build": "npx tsc && xcopy src\\template-files dist\\template-files\\ /E /H /Y /exclude:.excludefiles",
     "test-package-locally": "npm link --force && npx react-extension-quickstart create test-name"
   },
   "repository": {

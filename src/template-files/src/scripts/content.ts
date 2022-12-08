@@ -68,7 +68,7 @@ function injectReactApp(): void {
   The event listener will only be added if the window is the top window.
 */
 if (window.self === window.top) {
-  const KEY_BIND = "Control";
+  const KEY_BIND = "Control"; // Add template later...
   window.addEventListener("keyup", (event) => {
     if (event.key === KEY_BIND) {
       if (!injectedDiv) {

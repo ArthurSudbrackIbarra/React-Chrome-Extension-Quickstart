@@ -19,4 +19,8 @@ export class ReplacementsMap {
   public set(key: ReplacementKey, value: string): void {
     this.map.set(key, value);
   }
+
+  public get(key: ReplacementKey): string {
+    return this.map.get(key) || "";
+  }
 }

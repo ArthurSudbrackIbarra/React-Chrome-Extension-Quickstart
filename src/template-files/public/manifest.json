@@ -1,6 +1,6 @@
 {
-  "name": "Chrome React Extension",
-  "description": "A Chrome React Extension.",
+  "name": "::EXTENSION_NAME=my-react-extension::",
+  "description": "::PROJECT_DESCRIPTION=my-react-extension::",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
@@ -8,7 +8,6 @@
     "48": "logo192.png",
     "128": "logo192.png"
   },
-  "permissions": ["activeTab", "contextMenus"],
   "content_scripts": [
     {
       "matches": ["<all_urls>"],

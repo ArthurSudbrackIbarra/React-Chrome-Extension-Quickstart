@@ -31,7 +31,7 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <h1>My React Extension</h1>
+      <h1>::EXTENSION_NAME=My React Extension::</h1>
       <button
         onClick={() => {
           parentWindow.sendMessage({

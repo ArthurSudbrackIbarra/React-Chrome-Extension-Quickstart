@@ -4,24 +4,27 @@ div.App {
   background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-.App h1 {
-  margin: 0 0 20px;
+.App .title {
+  align-self: center;
 }
+
 .App h2,
+.App h3,
 .App p {
-  margin: 15px 0;
+  margin: 10px 0;
 }
 
 .App button {
-  width: 200px;
-  height: 40px;
-  padding: 10px;
+  padding: 15px;
   outline: none;
   border: none;
-  background-color: darkblue;
+  border-radius: 10px;
+  background-color: #00008b;
   color: white;
   cursor: pointer;
+}
+.App button:hover {
+  background-color: #020273;
 }

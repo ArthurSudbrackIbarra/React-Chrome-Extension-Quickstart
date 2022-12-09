@@ -31,7 +31,13 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <h1>::EXTENSION_NAME=My React Extension::</h1>
+      <h2 className="title">::EXTENSION_NAME=My React Extension::</h2>
+      <p>This is your React extension! Here are some tips:</p>
+      <h3>Messaging</h3>
+      <p>
+        Trade messages with the parent window by using the ParentWindow class,
+        try it!
+      </p>
       <button
         onClick={() => {
           parentWindow.sendMessage({
@@ -41,10 +47,21 @@ function App() {
             },
           });
         }}
+        style={{ margin: "0.5rem 0" }}
       >
-        Say Hello to Parent Window
+        Say Hello to the Parent Window
       </button>
       <p>Message received from parent: {message}</p>
+      <h3>Toggle Extension On/Off</h3>
+      <p>
+        Toggle the extension on/off by pressing the
+        ::TOGGLE_EXTENSION_KEYBIND=Alt:: key.
+      </p>
+      <h3>Be Creative!</h3>
+      <p>
+        Be creative and build your extension just like a normal React app, with
+        the benefits of TypeScript and all the React ecosystem!
+      </p>
     </div>
   );
 }

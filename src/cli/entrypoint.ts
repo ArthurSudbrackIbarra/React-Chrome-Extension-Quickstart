@@ -7,6 +7,7 @@ import { Prompt } from "./Prompt.js";
 import { ReplacementsMap } from "./ReplacementsMap.js";
 import { TemplateFiller } from "./TemplateFiller.js";
 import { FileHandler } from "./FileCopier.js";
+import { CommandRunner } from "./CommandRunner.js";
 
 /*
   Paths.
@@ -102,7 +103,11 @@ function create(projectName: string): void {
     Copy the template files to the project directory.
   */
   try {
-    FileHandler.copyDirectory(templatesDir, projectPath);
+    FileHandler.copyDirectory(templatesDir, projectPath, [
+      ".git",
+      "build",
+      "node_modules",
+    ]);
   } catch (error) {
     console.error("Error copying the template files.", error);
     process.exit(1);
@@ -122,13 +127,37 @@ function create(projectName: string): void {
   /*
     Initialize a git repository if the user wants to.
   */
+  const commandRunner = new CommandRunner(projectPath);
+  if (
+    INITIALIZE_GIT_REPOSITORY.toLowerCase() === "y" ||
+    INITIALIZE_GIT_REPOSITORY.toLowerCase() === "yes"
+  ) {
+    try {
+      console.log("[PENDING] Initializing git repository...");
+      commandRunner.gitInit();
+      console.log("[OK] Git repository initialized.");
+    } catch (error) {
+      console.error("Error initializing git repository.", error);
+      process.exit(1);
+    }
+  }
 
   /*
     Execute npm install command.
   */
+  try {
+    console.log(
+      "[PENDING] Installing the project dependencies (this may take a while)..."
+    );
+    commandRunner.npmInstall();
+    console.log("[OK] Project dependencies installed.");
+  } catch (error) {
+    console.error("Error installing the project dependencies.", error);
+    process.exit(1);
+  }
 
   /*
     Feedback to the user.
   */
-  console.log(`Project created at ${projectPath}.`);
+  console.log(`[DONE] Project created at ${projectPath}.`);
 }

@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync } from "fs";
+import { readdirSync, readFileSync, writeFileSync } from "fs";
 import { TemplateVariable, ReplacementsMap } from "./ReplacementsMap.js";
 
 export class TemplateFiller {
@@ -12,23 +12,23 @@ export class TemplateFiller {
     this.regex = new RegExp("::([^(=|:)]+)(=[^(=|:)]+)?::", "g");
   }
 
-  private replaceVariables(line: string): string {
-    for (const match of line.matchAll(this.regex)) {
+  private replaceVariables(str: string): string {
+    for (const match of str.matchAll(this.regex)) {
       /*
         Example of a match:
         ['::NAME=Arthur::', 'NAME', '=Arthur']
       */
       const fullMatch = match[0];
       const variable = match[1] as TemplateVariable;
-      const defaultValue = match[2].slice(1);
+      const defaultValue = match[2]?.slice(1);
       const replacement = this.replacementsMap.get(variable);
       if (replacement) {
-        line = line.replace(fullMatch, replacement);
+        str = str.replace(fullMatch, replacement);
       } else {
-        line = line.replace(fullMatch, defaultValue);
+        str = str.replace(fullMatch, defaultValue);
       }
     }
-    return line;
+    return str;
   }
 
   public fill(): void {
@@ -49,14 +49,21 @@ export class TemplateFiller {
             Reading the file content.
           */
           const filePath = `${this.templatesDir}/${file.name}`;
-          const filesLines = readFileSync(filePath, "utf8").split("\n");
-          for (const line of filesLines) {
+          const fileContent = readFileSync(filePath, "utf8");
+          /*
+            Replacing the variables in the file content.
+          */
+          const contentAfterFill = this.replaceVariables(fileContent);
+          if (fileContent !== contentAfterFill) {
+            /*
+              Writing the filled content to the file.
+            */
+            writeFileSync(filePath, contentAfterFill, "utf8");
           }
         }
       }
-    } catch (error) {
-      console.error("Error while reading template files: ", error);
-      process.exit(1);
+    } catch (error: any) {
+      throw new Error(error);
     }
   }
 }

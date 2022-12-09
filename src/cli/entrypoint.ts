@@ -6,6 +6,7 @@ import { resolve } from "path";
 import { manyInputs } from "./prompt.js";
 import { ReplacementsMap } from "./ReplacementsMap.js";
 import { TemplateFiller } from "./TemplateFiller.js";
+import { FileHandler } from "./FileCopier.js";
 
 /*
   Paths.
@@ -81,7 +82,7 @@ function create(projectName: string): void {
   } = answers;
 
   /*
-    ReplacementsMap is used to replace the placeholders in the template files.
+    ReplacementsMap is used to replace the variables in the template files.
   */
   const replacementsMap = new ReplacementsMap();
   replacementsMap.set("PROJECT_NAME", projectName);
@@ -89,4 +90,41 @@ function create(projectName: string): void {
   replacementsMap.set("EXTENSION_NAME", EXTENSION_NAME);
   replacementsMap.set("EXTENSION_DESCRIPTION", EXTENSION_DESCRIPTION);
   replacementsMap.set("TOGGLE_EXTENSION_KEYBIND", TOGGLE_EXTENSION_KEYBIND);
+
+  /*
+    Create the project directory.
+  */
+  const projectPath = `${cmdPath}/${projectName}`;
+  try {
+    FileHandler.createDirectory(projectPath);
+  } catch (error) {
+    console.error("Error creating the project directory.", error);
+    process.exit(1);
+  }
+
+  /*
+    Copy the template files to the project directory.
+  */
+  try {
+    FileHandler.copyDirectory(templatesDir, projectPath);
+  } catch (error) {
+    console.error("Error copying the template files.", error);
+    process.exit(1);
+  }
+
+  /*
+    Fill the variables in the copied template files.
+  */
+  const templateFiller = new TemplateFiller(projectPath, replacementsMap);
+  try {
+    templateFiller.fill();
+  } catch (error) {
+    console.error("Error filling the template file values.", error);
+    process.exit(1);
+  }
+
+  /*
+    Feedback to the user.
+  */
+  console.log(`Project created at ${projectPath}.`);
 }

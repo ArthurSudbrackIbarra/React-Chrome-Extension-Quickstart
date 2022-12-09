@@ -1,8 +1,14 @@
-import pkg from "fs-extra";
-const { copySync } = pkg; /* CommonJS module import. */
+import fsExtra from "fs-extra";
+const { copySync } = fsExtra; /* CommonJS module import. */
 import { existsSync, mkdirSync } from "fs";
 
+/*
+  This class is responsible for handling file operations.
+*/
 export class FileHandler {
+  /*
+    Creates a directory if it doesn't exist.
+  */
   public static createDirectory(path: string): void {
     try {
       if (!existsSync(path)) {
@@ -12,6 +18,9 @@ export class FileHandler {
       throw new Error(error);
     }
   }
+  /*
+    Copies the content of a directory to another directory.
+  */
   public static copyDirectory(source: string, destination: string): void {
     try {
       copySync(source, destination, {

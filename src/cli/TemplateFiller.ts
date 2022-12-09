@@ -1,6 +1,10 @@
 import { readdirSync, readFileSync, writeFileSync } from "fs";
 import { TemplateVariable, ReplacementsMap } from "./ReplacementsMap.js";
 
+/*
+  This class is responsible for filling the
+  template files with the provided values.
+*/
 export class TemplateFiller {
   private templatesDir: string;
   private replacementsMap: ReplacementsMap;
@@ -12,6 +16,9 @@ export class TemplateFiller {
     this.regex = new RegExp("::([^(=|:)]+)(=[^(=|:)]+)?::", "g");
   }
 
+  /*
+    Replaces the variables in the string using the replacements map.
+  */
   private replaceVariables(str: string): string {
     for (const match of str.matchAll(this.regex)) {
       /*
@@ -31,6 +38,9 @@ export class TemplateFiller {
     return str;
   }
 
+  /*
+    Fills the template files recursively using the replacements map.
+  */
   public fill(): void {
     try {
       for (const file of readdirSync(this.templatesDir, {

@@ -3,7 +3,7 @@
 import { realpathSync } from "fs";
 import { fileURLToPath } from "url";
 import { resolve } from "path";
-import { manyInputs } from "./prompt.js";
+import { Prompt } from "./Prompt.js";
 import { ReplacementsMap } from "./ReplacementsMap.js";
 import { TemplateFiller } from "./TemplateFiller.js";
 import { FileHandler } from "./FileCopier.js";
@@ -11,7 +11,6 @@ import { FileHandler } from "./FileCopier.js";
 /*
   Paths.
 */
-
 const __dirname = fileURLToPath(new URL(".", import.meta.url));
 const cmdPath = realpathSync(process.cwd());
 const templatesDir = resolve(realpathSync(__dirname), "..", "template-files");
@@ -19,10 +18,8 @@ const templatesDir = resolve(realpathSync(__dirname), "..", "template-files");
 /*
   Handle command line arguments.
 */
-
 const args = process.argv.slice(2);
 const command = args[0]?.toLowerCase();
-
 if (!command) {
   console.log("[Error] No command provided.");
   process.exit(1);
@@ -52,12 +49,11 @@ switch (command) {
 /*
   Functions to handle the commands.
 */
-
 function create(projectName: string): void {
   /*
     Get input from the user to fill the placeholders.
   */
-  const answers = manyInputs([
+  const answers = Prompt.manyInputs([
     ["EXTENSION_NAME", "What will be the name of your extension?"],
     [
       "EXTENSION_DESCRIPTION",
@@ -122,6 +118,14 @@ function create(projectName: string): void {
     console.error("Error filling the template file values.", error);
     process.exit(1);
   }
+
+  /*
+    Initialize a git repository if the user wants to.
+  */
+
+  /*
+    Execute npm install command.
+  */
 
   /*
     Feedback to the user.

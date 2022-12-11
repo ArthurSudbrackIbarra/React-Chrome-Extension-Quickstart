@@ -39,7 +39,6 @@ function injectReactApp(): void {
   */
   const iframe = document.createElement("iframe");
   iframe.setAttribute("id", "react-app-iframe");
-  iframe.setAttribute("scrolling", "no");
   iframe.setAttribute("src", chrome.runtime.getURL("index.html"));
   /*
     Injecting the custom CSS to the page.
@@ -68,7 +67,7 @@ function injectReactApp(): void {
   The event listener will only be added if the window is the top window.
 */
 if (window.self === window.top) {
-  const KEY_BIND = "::TOGGLE_EXTENSION_KEYBIND=Alt::".toLowerCase();
+  const KEY_BIND = "Control".toLowerCase();
   window.addEventListener("keyup", (event) => {
     if (event.key.toLowerCase() === KEY_BIND) {
       if (!injectedDiv) {

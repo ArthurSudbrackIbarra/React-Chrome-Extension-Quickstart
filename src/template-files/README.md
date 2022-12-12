@@ -1,6 +1,6 @@
 # ::PROJECT_NAME=my-react-extension::
 
-A Chrome extension using React.
+A Chrome extension built using React.
 
 ## How to Build and Test
 

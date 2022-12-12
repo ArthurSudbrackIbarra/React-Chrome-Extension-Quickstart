@@ -3,7 +3,7 @@
 import { realpathSync } from "fs";
 import { fileURLToPath } from "url";
 import { resolve } from "path";
-import { Prompt } from "./Prompt.js";
+import { Prompts } from "./Prompts.js";
 import { ReplacementsMap } from "./ReplacementsMap.js";
 import { TemplateFiller } from "./TemplateFiller.js";
 import { FileHandler } from "./FileCopier.js";
@@ -54,21 +54,33 @@ function create(projectName: string): void {
   /*
     Get input from the user to fill the placeholders.
   */
-  const answers = Prompt.manyInputs([
-    ["EXTENSION_NAME", "What will be the name of your extension?"],
-    [
-      "EXTENSION_DESCRIPTION",
-      "What will be the description of your extension?",
-    ],
-    ["EXTENSION_AUTHOR", "What will be the author of your extension?"],
-    [
-      "TOGGLE_EXTENSION_KEYBIND",
-      "Which key will be used to toggle the extension popup visibility (A, Control, F7...)?",
-    ],
-    [
-      "INITIALIZE_GIT_REPOSITORY",
-      "Do you want to initialize a git repository (y/n)?",
-    ],
+  const answers = Prompts.manyInputs([
+    {
+      prompt: "What will be the name of your extension?",
+      default: projectName,
+      variableName: "EXTENSION_NAME",
+    },
+    {
+      prompt: "What will be the description of your extension?",
+      default: "My Chrome extension.",
+      variableName: "EXTENSION_DESCRIPTION",
+    },
+    {
+      prompt: "What will be the author of your extension?",
+      default: "None",
+      variableName: "EXTENSION_AUTHOR",
+    },
+    {
+      prompt:
+        "Which key will be used to toggle the extension popup on/off (A, Control, F7...)?",
+      default: "Alt",
+      variableName: "TOGGLE_EXTENSION_KEYBIND",
+    },
+    {
+      prompt: "Do you want to initialize a git repository - y/n?",
+      default: "y",
+      variableName: "INITIALIZE_GIT_REPOSITORY",
+    },
   ]);
   const {
     EXTENSION_NAME,
@@ -77,6 +89,8 @@ function create(projectName: string): void {
     TOGGLE_EXTENSION_KEYBIND,
     INITIALIZE_GIT_REPOSITORY,
   } = answers;
+
+  console.log(answers);
 
   /*
     ReplacementsMap is used to replace the variables in the template files.

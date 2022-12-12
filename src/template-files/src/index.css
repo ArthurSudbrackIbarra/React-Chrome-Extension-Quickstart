@@ -1,9 +1,37 @@
-html,
+/*
+  It's recommended not to change these properties.
+  They are used to prettify the extension's popup.
+---------------------------------------------------
+*/
+body {
+  overflow-x: hidden;
+}
 body,
 #root {
-  width: 100%;
+  width: 99%; /* 99% so that there is distance from the scrollbar */
   height: 100%;
 }
+body::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+body::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.2);
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+body::-webkit-scrollbar-thumb:active {
+  background: rgba(0, 0, 0, 0.9);
+}
+/*
+---------------------------------------------------
+*/
 
 body {
   margin: 0;

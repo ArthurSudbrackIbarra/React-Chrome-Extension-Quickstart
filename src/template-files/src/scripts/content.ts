@@ -67,7 +67,7 @@ function injectReactApp(): void {
   The event listener will only be added if the window is the top window.
 */
 if (window.self === window.top) {
-  const KEY_BIND = "Control".toLowerCase();
+  const KEY_BIND = "::TOGGLE_EXTENSION_KEYBIND=Alt::".toLowerCase();
   window.addEventListener("keyup", (event) => {
     if (event.key.toLowerCase() === KEY_BIND) {
       if (!injectedDiv) {

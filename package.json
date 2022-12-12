@@ -1,7 +1,7 @@
 {
   "name": "react-extension-quickstart",
   "version": "1.0.0",
-  "description": "npm package to generate a quickstart template for creating Chrome extensions.",
+  "description": "A npm package to generate a quickstart template for creating Chrome extensions.",
   "type": "module",
   "bin": {
     "react-extension-quickstart": "./dist/cli/entrypoint.js"
@@ -9,6 +9,7 @@
   "dependencies": {
     "@types/node": "16.18.3",
     "fs-extra": "^11.1.0",
+    "prompt-sync": "4.2.0",
     "typescript": "4.8.4"
   },
   "scripts": {

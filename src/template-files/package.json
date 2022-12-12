@@ -1,5 +1,5 @@
 {
-  "name": "aaaaaaaaa",
+  "name": "::PROJECT_NAME=my-react-extension::",
   "author": "::AUTHOR_NAME=None::",
   "version": "0.1.0",
   "dependencies": {

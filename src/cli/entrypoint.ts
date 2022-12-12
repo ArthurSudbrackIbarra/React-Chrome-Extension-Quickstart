@@ -90,8 +90,6 @@ function create(projectName: string): void {
     INITIALIZE_GIT_REPOSITORY,
   } = answers;
 
-  console.log(answers);
-
   /*
     ReplacementsMap is used to replace the variables in the template files.
   */

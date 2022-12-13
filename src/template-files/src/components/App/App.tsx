@@ -52,7 +52,9 @@ function App() {
         Say Hello to the Parent Window
       </button>
       {message && (
-        <p>Received a message from the parent window: <strong>{message}</strong></p>
+        <p>
+          Received a message from the parent window: <strong>{message}</strong>
+        </p>
       )}
       <h3 className="topic">Toggle Extension On/Off</h3>
       <p>

@@ -52,6 +52,13 @@ switch (command) {
 */
 function create(projectName: string): void {
   /*
+    Welcome message.
+  */
+  console.log("Welcome to the React Extension Quickstart CLI!");
+  console.log(
+    "Answer the following questions to create your extension. Press 'Enter' to use default values.\n"
+  );
+  /*
     Get input from the user to fill the placeholders.
   */
   const answers = Prompts.manyInputs([
@@ -72,8 +79,8 @@ function create(projectName: string): void {
     },
     {
       prompt:
-        "Which key will be used to toggle the extension popup on/off (A, Control, F7...)?",
-      default: "Alt",
+        "Which key will be used to toggle the extension popup on/off (Escape, Control, F7...)?",
+      default: "Escape",
       variableName: "TOGGLE_EXTENSION_KEYBIND",
     },
     {
@@ -82,6 +89,7 @@ function create(projectName: string): void {
       variableName: "INITIALIZE_GIT_REPOSITORY",
     },
   ]);
+  console.log(); /* Add a new line. */
   const {
     EXTENSION_NAME,
     EXTENSION_DESCRIPTION,

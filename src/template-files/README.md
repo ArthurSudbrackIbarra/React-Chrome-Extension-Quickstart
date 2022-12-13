@@ -19,4 +19,4 @@ Now that your extension has already been loaded into Chrome, whenever you make n
 
 ## How to Use
 
-Once you have loaded your extension into Chrome, you can use it by navigating to any website and pressing the `::TOGGLE_EXTENSION_KEYBIND=Alt::` key. This will toggle the extension popup on and off.
+Once you have loaded your extension into Chrome, you can use it by navigating to any website and pressing the `::TOGGLE_EXTENSION_KEYBIND=Escape::` key. This will toggle the extension popup on and off.

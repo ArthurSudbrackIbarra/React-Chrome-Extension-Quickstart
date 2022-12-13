@@ -22,7 +22,7 @@ export class Prompts {
   public static input(promptOptions: PromptOptions): string {
     console.log(
       `\n${promptOptions.prompt}${
-        promptOptions.default ? ` (${promptOptions.default})` : ""
+        promptOptions.default ? ` [${promptOptions.default}]` : ""
       }`
     );
     const answer = this._prompt("> ");

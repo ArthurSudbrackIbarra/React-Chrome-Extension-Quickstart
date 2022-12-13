@@ -1,6 +1,6 @@
 # Messaging Directory
 
-This directory contains the source code for the messaging system. The messaging system is responsible for sending and receiving messages between the child iframe, which contains your React app, and the parent window.
+This directory contains the source code for the messaging system. The messaging system is responsible for the exchange of messages between the child iframe, which contains your React app, and the parent window.
 
 ## What to Change Here?
 

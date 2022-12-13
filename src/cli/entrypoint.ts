@@ -22,7 +22,7 @@ const templatesDir = resolve(realpathSync(__dirname), "..", "template-files");
 const args = process.argv.slice(2);
 const command = args[0]?.toLowerCase();
 if (!command) {
-  console.log("[Error] No command provided.");
+  console.log("[ERROR] No command provided.");
   process.exit(1);
 }
 
@@ -31,7 +31,7 @@ switch (command) {
     {
       let projectName = args[1];
       if (!projectName) {
-        console.log("[Error] Please provide a project name.");
+        console.log("[ERROR] Please provide a project name.");
         console.log(
           "Example: react-extension-quickstart create <PROJECT_NAME>"
         );
@@ -42,7 +42,7 @@ switch (command) {
     }
     break;
   default: {
-    console.log(`[Error] Unknown command '${command}'.`);
+    console.log(`[ERROR] Unknown command '${command}'.`);
     process.exit(1);
   }
 }
@@ -54,9 +54,9 @@ function create(projectName: string): void {
   /*
     Welcome message.
   */
-  console.log("Welcome to the React Extension Quickstart CLI!");
+  console.log("\nWelcome to the React Extension Quickstart CLI!");
   console.log(
-    "Answer the following questions to create your extension. Press 'Enter' to use default values.\n"
+    "Answer the following questions to create your extension. Press 'Enter' to use default values."
   );
   /*
     Get input from the user to fill the placeholders.
@@ -111,7 +111,7 @@ function create(projectName: string): void {
   /*
     Create the project directory.
   */
-  const projectPath = `${cmdPath}/${projectName}`;
+  const projectPath = resolve(cmdPath, projectName);
   try {
     FileHandler.createDirectory(projectPath);
   } catch (error) {

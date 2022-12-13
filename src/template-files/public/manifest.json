@@ -1,6 +1,7 @@
 {
   "name": "::EXTENSION_NAME=my-react-extension::",
   "description": "::PROJECT_DESCRIPTION=my-react-extension::",
+  "author": "::AUTHOR_NAME=None::",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {

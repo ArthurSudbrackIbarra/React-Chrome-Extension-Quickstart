@@ -54,7 +54,7 @@ function create(projectName: string): void {
   /*
     Welcome message.
   */
-  console.log("\nWelcome to the React Extension Quickstart CLI!");
+  console.log("\nWelcome to the React Chrome Extension Quickstart CLI!");
   console.log(
     "Answer the following questions to create your extension. Press 'Enter' to use default values."
   );

@@ -20,7 +20,7 @@ export class CommandRunner {
 
   public npmInstall(): void {
     try {
-      execSync("npm install", { cwd: this.cmdPath });
+      execSync("npm install --silent", { cwd: this.cmdPath });
     } catch (error: any) {
       throw new Error(error);
     }

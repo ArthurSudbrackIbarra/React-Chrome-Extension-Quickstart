@@ -113,7 +113,9 @@ function create(projectName: string): void {
   */
   const projectPath = resolve(cmdPath, projectName);
   try {
+    console.log("[PENDING] Creating the project directory...");
     FileHandler.createDirectory(projectPath);
+    console.log("[OK] Project directory created.");
   } catch (error) {
     console.error("Error creating the project directory.", error);
     process.exit(1);
@@ -123,6 +125,7 @@ function create(projectName: string): void {
     Copy the template files to the project directory.
   */
   try {
+    console.log("[PENDING] Creating the project files...");
     FileHandler.copyDirectory(templatesDir, projectPath, [
       ".git",
       "build",
@@ -139,8 +142,9 @@ function create(projectName: string): void {
   const templateFiller = new TemplateFiller(projectPath, replacementsMap);
   try {
     templateFiller.fill();
+    console.log("[OK] Project files created.");
   } catch (error) {
-    console.error("Error filling the template file values.", error);
+    console.error("Error filling the template files values.", error);
     process.exit(1);
   }
 
@@ -180,4 +184,8 @@ function create(projectName: string): void {
     Feedback to the user.
   */
   console.log(`[DONE] Project created at ${projectPath}.`);
+  console.log(
+    "\nPlease read the 'README.md' file at the project root for more info on how to build and test your extension."
+  );
+  console.log("\nHappy coding! :)\n");
 }

@@ -1,2 +1,4 @@
+:: Directories that should not be copied
+:: to ./dist when running 'npm run build'
 build
 node_modules

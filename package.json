@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart"
+    "url": "https://github.com/ArthurSudbrackIbarra/React-Chrome-Extension-Quickstart"
   },
   "keywords": [],
   "author": "Arthur Sudbrack Ibarra",
@@ -27,9 +27,9 @@
     "access": "public"
   },
   "bugs": {
-    "url": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart/issues"
+    "url": "https://github.com/ArthurSudbrackIbarra/React-Chrome-Extension-Quickstart/issues"
   },
-  "homepage": "https://github.com/ArthurSudbrackIbarra/React-Extension-Quickstart#readme",
+  "homepage": "https://github.com/ArthurSudbrackIbarra/React-Chrome-Extension-Quickstart#readme",
   "devDependencies": {
     "@types/fs-extra": "9.0.13",
     "@types/prompt-sync": "4.2.0"

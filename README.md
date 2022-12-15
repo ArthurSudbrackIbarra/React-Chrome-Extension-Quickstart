@@ -9,7 +9,7 @@
 Using this package is very simple. Just run the following command in your terminal:
 
 ```bash
-npx react-chrome-extension-quickstart create <PROJECT_NAME>
+npx @magicmanatee/react-chrome-extension-quickstart create <PROJECT_NAME>
 ```
 
 ** Replace `<PROJECT_NAME>` with the name of your project.

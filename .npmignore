@@ -1,7 +1,0 @@
-# Development files that should not be pushed to npm.
-node_modules
-src
-.copyignore
-.gitignore
-package-lock.json
-tsconfig.json

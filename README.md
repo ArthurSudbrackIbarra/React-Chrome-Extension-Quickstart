@@ -1,15 +1,17 @@
-# React Extension Quickstart
+# React Chrome Extension Quickstart
 
-(In the Future) => npm package to generate a quickstart template for creating Chrome extensions.
+**React Chrome Extension Quickstart** is a npm package to generate a quickstart template for creating Chrome extensions with React.
 
-(As of Now) => Only the quickstart template files are here in this repository. The files are not "templated" yet.
+![Extension Example](https://user-images.githubusercontent.com/69170322/207930651-307aa4a7-6461-4aef-ae69-4c3f56c5fae1.png)
 
 ## How to Use
 
-Use the command:
+Using this package is very simple. Just run the following command in your terminal:
 
-```sh
-npm run build
+```bash
+npx react-chrome-extension-quickstart create <PROJECT_NAME>
 ```
 
-Then load the extension in Chrome by selecting the `build` folder generated after the command was ran.
+** Replace `<PROJECT_NAME>` with the name of your project.
+
+This command will create a new folder containing the template files in your current directory.

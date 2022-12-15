@@ -4,5 +4,4 @@ src
 .copyignore
 .gitignore
 package-lock.json
-README.md
 tsconfig.json

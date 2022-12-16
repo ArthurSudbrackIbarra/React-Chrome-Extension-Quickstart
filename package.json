@@ -1,6 +1,6 @@
 {
   "name": "react-chrome-extension-quickstart",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A npm package to generate a quickstart template for creating Chrome extensions.",
   "type": "module",
   "bin": {

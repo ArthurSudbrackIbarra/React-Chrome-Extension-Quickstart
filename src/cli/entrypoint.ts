@@ -149,16 +149,18 @@ function create(projectName: string): void {
   }
 
   /*
-    npm turns all .gitignore files into .npmignore files when downloading the package.
-    Because of that, we need to rename the .npmignore file to .gitignore.
+    .gitignore files are not pushed to npm, so the name GIT_IGNORE was used. 
+
+    Because of that, we need to rename the GIT_IGNORE file to .gitignore
+    once the files are copied.
   */
   try {
     FileHandler.renameFile(
-      `${projectPath}/.npmignore`,
+      `${projectPath}/GIT_IGNORE`,
       `${projectPath}/.gitignore`
     );
   } catch (error) {
-    console.error("Error renaming the .npmignore file.", error);
+    console.error("Error renaming the GIT_IGNORE file.", error);
     process.exit(1);
   }
 

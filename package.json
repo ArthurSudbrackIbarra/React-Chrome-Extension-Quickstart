@@ -1,6 +1,6 @@
 {
   "name": "react-chrome-extension-quickstart",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A npm package to generate a quickstart template for creating Chrome extensions.",
   "type": "module",
   "bin": {
@@ -24,7 +24,15 @@
     "type": "git",
     "url": "https://github.com/ArthurSudbrackIbarra/React-Chrome-Extension-Quickstart"
   },
-  "keywords": ["chrome", "chrome-extension", "browser-extension", "react", "typescript", "quickstart", "template"],
+  "keywords": [
+    "chrome",
+    "chrome-extension",
+    "browser-extension",
+    "react",
+    "typescript",
+    "quickstart",
+    "template"
+  ],
   "author": "Arthur Sudbrack Ibarra",
   "license": "ISC",
   "publishConfig": {

@@ -6,7 +6,7 @@ import { resolve } from "path";
 import { Prompts } from "./Prompts.js";
 import { ReplacementsMap } from "./ReplacementsMap.js";
 import { TemplateFiller } from "./TemplateFiller.js";
-import { FileHandler } from "./FileCopier.js";
+import { FileHandler } from "./FileHandler.js";
 import { CommandRunner } from "./CommandRunner.js";
 
 /*
@@ -149,6 +149,20 @@ function create(projectName: string): void {
   }
 
   /*
+    npm turns all .gitignore files into .npmignore files when downloading the package.
+    Because of that, we need to rename the .npmignore file to .gitignore.
+  */
+  try {
+    FileHandler.renameFile(
+      `${projectPath}/.npmignore`,
+      `${projectPath}/.gitignore`
+    );
+  } catch (error) {
+    console.error("Error renaming the .npmignore file.", error);
+    process.exit(1);
+  }
+
+  /*
     Initialize a git repository if the user wants to.
   */
   const commandRunner = new CommandRunner(projectPath);
@@ -161,8 +175,7 @@ function create(projectName: string): void {
       commandRunner.gitInit();
       console.log("[OK] Git repository initialized.");
     } catch (error) {
-      console.error("Error initializing git repository.", error);
-      process.exit(1);
+      console.error("Error initializing git repository. Proceeding...", error);
     }
   }
 

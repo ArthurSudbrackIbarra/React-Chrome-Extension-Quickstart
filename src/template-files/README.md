@@ -1,4 +1,4 @@
-# ::PROJECT_NAME=my-react-extension::
+# ::EXTENSION_NAME=My React Extension::
 
 A Chrome extension built using React.
 

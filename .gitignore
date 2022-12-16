@@ -1,7 +1,7 @@
 # Template files that should not be pushed.
-template-files/build
-template-files/package-lock.json
-template-files/node_modules
+src/template-files/build
+src/template-files/package-lock.json
+src/template-files/node_modules
 
 # Node modules.
 node_modules
